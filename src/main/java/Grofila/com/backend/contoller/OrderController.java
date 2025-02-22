@@ -1,4 +1,4 @@
-package Grofila.com.backend.controller;
+package Grofila.com.backend.contoller;
 
 import Grofila.com.backend.model.Order;
 import Grofila.com.backend.model.OrderStatus;
@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "*")
 
 @RestController
 @RequestMapping("/orders")

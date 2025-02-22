@@ -95,4 +95,3 @@ public class Order {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
-

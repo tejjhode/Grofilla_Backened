@@ -68,7 +68,7 @@ public class Cart {
 
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "orderId")
-    private Order order;  // 🔹 Add this field to reference Order
+    private Order order;
 
     @Column(nullable = false)
     private Long productId;
