@@ -1,8 +1,10 @@
+# Build Stage
 FROM maven:3-eclipse-temurin-17 AS build
 COPY . .
-RUN mvn clean pakage -DskipTests
+RUN mvn clean package -DskipTests
 
+# Runtime Stage
 FROM eclipse-temurin:17-alpine
-COPY --from=build /target/*.jar demo.jar
+COPY --from=build target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","demo.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
