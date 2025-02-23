@@ -12,19 +12,19 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orderId") // ✅ Ensure the column name is correctly mapped
-    private Long id;
+    @Column(name = "orderId")
+    private Long orderId;
 
     @ManyToOne
     @JoinColumn(name = "shopkeeper_id", nullable = false)
     private Shopkeeper shopkeeper;
 
     public Long getId() {
-        return id;
+        return orderId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.orderId = id;
     }
 
     public Shopkeeper getShopkeeper() {

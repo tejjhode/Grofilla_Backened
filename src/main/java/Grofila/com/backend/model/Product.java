@@ -97,10 +97,10 @@ public class Product {
     }
 
     @Column(nullable = false)
-    private int stockQuantity;  // Ensure correct column name
+    private int stockQuantity;
 
     @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
-    private int stock = 0;  // Default value set to 0
+    private int stock = 0;
 
     @Column(nullable = false)
     private String category;
@@ -110,5 +110,5 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "shopkeeper_id", nullable = false)
-    private Shopkeeper shopkeeper; // Correct foreign key mapping
+    private Shopkeeper shopkeeper;
 }
