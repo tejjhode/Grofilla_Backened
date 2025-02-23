@@ -30,7 +30,6 @@ public class OrderService {
     @Autowired
     private ShopkeeperRepository shopkeeperRepository;
 
-    // Place a new order
     public OrderResponseDTO placeOrder(Long customerId, Long shopkeeperId) {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found!"));
@@ -42,7 +41,6 @@ public class OrderService {
             throw new RuntimeException("Cart is empty!");
         }
 
-        // Calculate total amount
         double totalAmount = cartItems.stream()
                 .mapToDouble(item -> item.getTotalPrice() * item.getQuantity())
                 .sum();
@@ -66,7 +64,6 @@ public class OrderService {
         return convertToDTO(savedOrder);
     }
 
-    // Get orders for a customer
     public List<OrderResponseDTO> getCustomerOrders(Long customerId) {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found!"));
@@ -74,7 +71,6 @@ public class OrderService {
         return orders.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    // Get orders for a shopkeeper
     public List<OrderResponseDTO> getShopkeeperOrders(Long shopkeeperId) {
         Shopkeeper shopkeeper = shopkeeperRepository.findById(shopkeeperId)
                 .orElseThrow(() -> new RuntimeException("Shopkeeper not found!"));
@@ -82,7 +78,6 @@ public class OrderService {
         return orders.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    // Update order status
     public Order updateOrderStatus(Long orderId, OrderStatus status) {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Order not found!"));
@@ -92,7 +87,6 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    // Cancel an order
     public void cancelOrder(Long orderId) {
         if (!orderRepository.existsById(orderId)) {
             throw new RuntimeException("Order not found!");
@@ -100,7 +94,6 @@ public class OrderService {
         orderRepository.deleteById(orderId);
     }
 
-    // Convert Order object to OrderResponseDTO
     private OrderResponseDTO convertToDTO(Order order) {
         return new OrderResponseDTO(
                 order.getId(),
