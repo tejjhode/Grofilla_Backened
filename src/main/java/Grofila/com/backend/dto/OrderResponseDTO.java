@@ -51,7 +51,7 @@ public class OrderResponseDTO {
     public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
-
+    ////////////////////
     public BigDecimal getTotalAmount() {
         return totalAmount;
     }
