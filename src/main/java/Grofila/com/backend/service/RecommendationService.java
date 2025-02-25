@@ -16,13 +16,11 @@ public class RecommendationService {
         this.recommendationRepository = recommendationRepository;
     }
 
-    // **GENERATE RECOMMENDATIONS FOR A USER**
     public List<Recommendation> getRecommendationsForUser(Long userId) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(AI_API_URL + userId, List.class);
     }
 
-    // **SAVE NEW RECOMMENDATION**
     public Recommendation saveRecommendation(Recommendation recommendation) {
         return recommendationRepository.save(recommendation);
     }

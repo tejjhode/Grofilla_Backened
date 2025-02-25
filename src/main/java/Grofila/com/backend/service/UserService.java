@@ -24,19 +24,15 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // **REGISTER USER (USED BY CUSTOMER & SHOPKEEPER)**
     public User registerUser(User user) {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new RuntimeException("User already exists");
         }
 
-        // Ensure password is encoded before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        // Save user and return it
         return userRepository.save(user);
     }
-    // **LOGIN USER**
     public User loginUser(String email, String password) {
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent() && passwordEncoder.matches(password, user.get().getPassword())) {
@@ -45,7 +41,6 @@ public class UserService {
         throw new RuntimeException("Invalid credentials");
     }
 
-    // **GET ALL USERS**
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

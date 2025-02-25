@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
-@Table(name = "orders") // Fixed reserved keyword issue
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

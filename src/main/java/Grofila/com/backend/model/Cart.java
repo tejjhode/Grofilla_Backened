@@ -78,4 +78,16 @@ public class Cart {
 
     @Column(nullable = false)
     private double totalPrice;
+
+    @Column(nullable = false)
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 }

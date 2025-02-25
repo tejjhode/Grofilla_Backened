@@ -55,7 +55,6 @@ public class OrderService {
 
         Order savedOrder = orderRepository.save(order);
 
-        // Link cart items to the order
         cartItems.forEach(item -> {
             item.setOrder(savedOrder);
             cartRepository.save(item);
@@ -82,7 +81,7 @@ public class OrderService {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Order not found!"));
 
-        order.setStatus(status); // ⚠️ Issue likely related here
+        order.setStatus(status);
 
         return orderRepository.save(order);
     }

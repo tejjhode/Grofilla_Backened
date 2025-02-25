@@ -19,7 +19,6 @@ public class ShopkeeperService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // ✅ Register Shopkeeper with encrypted password
     public Shopkeeper registerShopkeeper(Shopkeeper shopkeeper) {
         if (shopkeeperRepository.findByEmail(shopkeeper.getEmail()).isPresent()) {
             throw new RuntimeException("Shopkeeper with this email already exists.");
@@ -28,7 +27,6 @@ public class ShopkeeperService {
         return shopkeeperRepository.save(shopkeeper);
     }
 
-    // ✅ Login Shopkeeper and validate password
     public Shopkeeper loginShopkeeper(String email, String password) {
         Shopkeeper shopkeeper = shopkeeperRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Invalid email or password."));
@@ -40,19 +38,16 @@ public class ShopkeeperService {
         return shopkeeper;
     }
 
-    // ✅ Fetch Shopkeeper by ID
     public Shopkeeper getShopkeeperById(Long id) {
         return shopkeeperRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Shopkeeper not found."));
     }
 
-    // ✅ Update Shopkeeper with password check
     public Shopkeeper updateShopkeeper(Long id, Shopkeeper updatedShopkeeper) {
         return shopkeeperRepository.findById(id).map(shopkeeper -> {
             shopkeeper.setName(updatedShopkeeper.getName());
             shopkeeper.setEmail(updatedShopkeeper.getEmail());
 
-            // Only update password if provided
             if (updatedShopkeeper.getPassword() != null && !updatedShopkeeper.getPassword().isEmpty()) {
                 shopkeeper.setPassword(passwordEncoder.encode(updatedShopkeeper.getPassword()));
             }
@@ -63,7 +58,6 @@ public class ShopkeeperService {
         }).orElseThrow(() -> new RuntimeException("Shopkeeper not found."));
     }
 
-    // ✅ Delete Shopkeeper by ID
     public void deleteShopkeeper(Long id) {
         if (!shopkeeperRepository.existsById(id)) {
             throw new RuntimeException("Shopkeeper not found.");

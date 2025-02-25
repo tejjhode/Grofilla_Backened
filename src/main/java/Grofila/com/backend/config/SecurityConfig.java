@@ -23,14 +23,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                // ✅ Updated way to disable CSRF
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login", "/api/auth/register","/api/shopkeepers/**",
                                 "/api/customers/**","/products/**","/orders/**","/api/cart/**","/api/reviews/**").permitAll() // Allow login & register APIs
                         .anyRequest().authenticated() // Secure all other endpoints
                 )
-                .formLogin(form -> form.disable()) // Disable default login form
-                .httpBasic(httpBasic -> httpBasic.disable()); // Disable HTTP Basic Authentication if not needed
+                .formLogin(form -> form.disable())
+                .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
     }

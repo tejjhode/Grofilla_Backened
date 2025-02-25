@@ -19,7 +19,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    // **REGISTER USER**
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {
@@ -30,7 +29,7 @@ public class UserController {
         }
     }
 
-    // **USER LOGIN**
+
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody User user) {
         User loggedInUser = userService.loginUser(user.getEmail(), user.getPassword());
@@ -43,7 +42,6 @@ public class UserController {
         return ResponseEntity.status(401).body("Invalid email or password");
         }
 
-    // **GET USER PROFILE**
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserProfile(@PathVariable Long id) {
         Optional<User> user = userService.getUserById(id);

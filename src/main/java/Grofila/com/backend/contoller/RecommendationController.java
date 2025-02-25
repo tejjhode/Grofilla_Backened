@@ -17,13 +17,11 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
-    // **GET RECOMMENDATIONS FOR A USER**
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Recommendation>> getRecommendations(@PathVariable Long userId) {
         return ResponseEntity.ok(recommendationService.getRecommendationsForUser(userId));
     }
 
-    // **ADD RECOMMENDATION (AI MODEL WILL CALL THIS API)**
     @PostMapping
     public ResponseEntity<Recommendation> addRecommendation(@RequestBody Recommendation recommendation) {
         return ResponseEntity.ok(recommendationService.saveRecommendation(recommendation));

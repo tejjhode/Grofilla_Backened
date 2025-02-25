@@ -30,23 +30,19 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    // Get all products
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    // Get products by shopkeeper
     public List<Product> getProductsByShopkeeper(Long shopkeeperId) {
         return productRepository.findByShopkeeperId(shopkeeperId);
     }
 
-    // Get a single product by ID
     public Product getProductById(Long id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found!"));
     }
 
-    // Update product details
     public Product updateProduct(Long id, Product updatedProduct) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found!"));
@@ -61,7 +57,6 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    // Delete a product
     public void deleteProduct(Long id) {
         if (!productRepository.existsById(id)) {
             throw new RuntimeException("Product not found!");

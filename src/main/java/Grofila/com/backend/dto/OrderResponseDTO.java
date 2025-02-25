@@ -72,5 +72,4 @@ public class OrderResponseDTO {
         this.totalAmount = totalAmount;
     }
 
-    // Getters and Setters
 }
