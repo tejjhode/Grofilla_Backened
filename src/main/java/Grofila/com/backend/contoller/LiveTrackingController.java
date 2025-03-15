@@ -17,7 +17,7 @@ public class LiveTrackingController {
         this.trackingRepository = trackingRepository;
     }
 
-    // ✅ Fetch live location of order
+
     @GetMapping("/{orderId}")
     public ResponseEntity<LiveTracking> getOrderTracking(@PathVariable Long orderId) {
         Optional<LiveTracking> tracking = trackingRepository.findByOrderId(orderId);
