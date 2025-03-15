@@ -24,7 +24,6 @@ public class LiveTrackingController {
         return tracking.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // ✅ Update live tracking (delivery agent updates location)
     @PostMapping("/update")
     public ResponseEntity<LiveTracking> updateTracking(@RequestBody LiveTracking tracking) {
         if (tracking.getOrderId() == null || tracking.getAgentId() == null) {

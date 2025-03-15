@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173/") // Allows requests from all origins
+@CrossOrigin(origins = "*")
 public class UserController {
 
     private final UserService userService;

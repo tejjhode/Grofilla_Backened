@@ -1,4 +1,4 @@
-package Grofila.com.backend.controller;
+package Grofila.com.backend.contoller;
 
 import Grofila.com.backend.model.Product;
 import Grofila.com.backend.service.ProductService;
