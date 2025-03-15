@@ -1,11 +1,16 @@
 package Grofila.com.backend.dto;
 
 import Grofila.com.backend.model.OrderStatus;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class OrderResponseDTO {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
     private String status;
     private Long customerId;
