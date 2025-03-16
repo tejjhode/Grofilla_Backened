@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "functions": {
+    "api/index.js": {
+      "runtime": "vercel-jvm@1.0.0"
+    }
+  }
+}
